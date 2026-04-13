@@ -342,6 +342,9 @@ export default function IssueToDSR() {
                                 {product.name || item.productName}
                               </div>
                               <div className="text-sm text-gray-500 mt-1">
+                                <p className="text-red-400">{product.sku}</p>
+                              </div>
+                              <div className="text-sm text-gray-500 mt-1">
                                 Available: {product.adminStock || 0} units
                               </div>
                             </div>
