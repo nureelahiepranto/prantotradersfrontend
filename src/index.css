@@ -1,0 +1,9 @@
+@import "tailwindcss";
+.container-max { max-width: 1100px; margin-left: auto; margin-right: auto; padding: 0 1rem; }
+
+/* print helper */
+@media print {
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .shadow { box-shadow: none !important; }
+}
