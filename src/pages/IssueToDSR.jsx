@@ -1,167 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import api from '../api/axios';
-// import Pagination from '../components/Pagination';
-
-// export default function IssueToDSR() {
-//   const [products, setProducts] = useState([]);
-//   const [dsrs, setDsrs] = useState([]);
-//   const [selected, setSelected] = useState({ dsrId: '', items: [] });
-//   const [meta, setMeta] = useState({ page: 1, pages: 1, limit: 12 });
-
-//   useEffect(() => {
-//     loadProducts(1);
-//     loadDsrs();
-//   }, []);
-
-//   const loadProducts = async (page = 1) => {
-//     const res = await api.get(`/products?page=${page}&limit=${meta.limit}`);
-//     setProducts(res.data.products || []);
-//     setMeta(res.data);
-//   };
-
-//   const loadDsrs = async () => {
-//     const res = await api.get('/auth/dsrs');
-
-//     // 🔥 Ensure backend returns _id, not id
-//     const cleaned = res.data.map(d => ({
-//       _id: d._id || d.id,
-//       name: d.name
-//     }));
-
-//     setDsrs(cleaned);
-//   };
-
-//   const addItem = (productId) => {
-//     setSelected(prev => ({
-//       ...prev,
-//       items: [...prev.items, { productId, qty: 1 }]
-//     }));
-//   };
-
-//   const changeQty = (index, qty) => {
-//     const newItems = [...selected.items];
-//     newItems[index].qty = Number(qty);
-//     setSelected({ ...selected, items: newItems });
-//   };
-
-//   const removeItem = (idx) => {
-//     setSelected(prev => ({
-//       ...prev,
-//       items: prev.items.filter((_, i) => i !== idx)
-//     }));
-//   };
-
-//   const submit = async (e) => {
-//     e.preventDefault();
-
-//     if (!selected.dsrId) return alert("Select a DSR first!");
-//     if (!selected.items.length) return alert("Add at least one product!");
-
-//     const body = {
-//       dsrId: selected.dsrId,
-//       items: selected.items.map(i => ({
-//         productId: i.productId,
-//         qty: i.qty
-//       }))
-//     };
-
-//     console.log("🔥 SENDING ISSUE BODY:", body);
-
-//     try {
-//       await api.post("/dsrissue/issue", body);
-//       alert("Issued successfully!");
-
-//       setSelected({ dsrId: "", items: [] });
-//       loadProducts(meta.page);
-//     } catch (err) {
-//       console.log("ISSUE ERROR:", err.response?.data || err);
-//       alert(err.response?.data?.message || "Issue failed");
-//     }
-//   };
-
-//   return (
-//     <div className="p-6 container-max mx-auto">
-//       <h2 className="text-2xl font-semibold mb-4">Issue Products to DSR</h2>
-
-//       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-//         {/* Products */}
-//         <div className="bg-white p-4 rounded shadow">
-//           <h3 className="font-semibold mb-3">Products</h3>
-
-//           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-//             {products.map(p => (
-//               <div key={p._id} className="border p-2 rounded flex justify-between">
-//                 <div>
-//                   <div className="font-medium">{p.name}</div>
-//                   <div className="text-sm text-gray-500">Stock: {p.adminStock}</div>
-//                 </div>
-//                 <button className="px-2 py-1 border rounded" onClick={() => addItem(p._id)}>
-//                   Add
-//                 </button>
-//               </div>
-//             ))}
-//           </div>
-
-//           <Pagination page={meta.page} pages={meta.pages} onChange={loadProducts} />
-//         </div>
-
-//         {/* Form */}
-//         <div className="bg-white p-4 rounded shadow">
-//           <h3 className="font-semibold mb-3">Issue Form</h3>
-
-//           <form onSubmit={submit} className="space-y-3">
-
-//             <select
-//               className="w-full p-2 border rounded"
-//               value={selected.dsrId}
-//               onChange={(e) => setSelected({ ...selected, dsrId: e.target.value })}
-//             >
-//               <option value="">Select DSR</option>
-//               {dsrs.map(d => (
-//                 <option key={d._id} value={d._id}>
-//                   {d.name}
-//                 </option>
-//               ))}
-//             </select>
-
-//             {selected.items.map((it, idx) => {
-//               const prod = products.find(p => p._id === it.productId);
-//               return (
-//                 <div key={idx} className="flex items-center gap-2">
-//                   <div className="flex-1">{prod?.name}</div>
-
-//                   <input
-//                     type="number"
-//                     className="w-20 p-1 border rounded"
-//                     min={1}
-//                     value={it.qty}
-//                     onChange={(e) => changeQty(idx, e.target.value)}
-//                   />
-
-//                   <button
-//                     type="button"
-//                     className="px-2 py-1 border rounded"
-//                     onClick={() => removeItem(idx)}
-//                   >
-//                     X
-//                   </button>
-//                 </div>
-//               );
-//             })}
-
-//             <button className="w-full bg-blue-600 text-white py-2 rounded">
-//               Issue Now
-//             </button>
-
-//           </form>
-//         </div>
-
-//       </div>
-//     </div>
-//   );
-// }
-
 import React, { useEffect, useState } from 'react';
 import api from '../api/axios';
 import Pagination from '../components/Pagination';
@@ -187,6 +23,8 @@ export default function IssueToDSR() {
       const res = await api.get(`/products?page=${page}&limit=${meta.limit}`);
       setProducts(res.data.products || []);
       setMeta(res.data);
+      
+      
     } catch (err) {
       console.error('Error loading products:', err);
       setError('Failed to load products');
@@ -389,7 +227,8 @@ export default function IssueToDSR() {
                       <div key={product._id} className="border border-gray-200 rounded-xl p-4 hover:border-blue-300 hover:shadow-md transition-all duration-200">
                         <div className="flex justify-between items-start mb-3">
                           <div className="flex-1">
-                            <h4 className="font-semibold text-gray-800 line-clamp-1">{product.name}</h4>
+                            <h4 className="font-semibold text-gray-800 ">{product.name}</h4>
+                            <p className="text-red-400">{product.sku}</p>
                             <div className="flex items-center mt-2 space-x-4 text-sm">
                               <span className="px-2 py-1 bg-blue-50 text-blue-700 rounded-lg font-medium">
                                 Stock: {product.adminStock}
