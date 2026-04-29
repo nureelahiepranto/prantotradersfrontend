@@ -6,7 +6,7 @@ export default function IssueToDSR() {
   const [products, setProducts] = useState([]);
   const [dsrs, setDsrs] = useState([]);
   const [selected, setSelected] = useState({ dsrId: '', items: [] });
-  const [meta, setMeta] = useState({ page: 1, pages: 1, limit: 12 });
+  const [meta, setMeta] = useState({ page: 1, pages: 1, limit: 1000 });
   const [loading, setLoading] = useState({ products: true, dsrs: true });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -347,6 +347,12 @@ export default function IssueToDSR() {
                               <div className="text-sm text-gray-500 mt-1">
                                 Available: {product.adminStock || 0} units
                               </div>
+
+                               {/* 🔥 Product Total Value */}
+  <div className="text-sm text-green-600 font-semibold mt-1">
+    Total Value: ৳
+    {((product.sellPrice || 0) * item.qty).toFixed(2)}
+  </div>
                             </div>
                             
                             <div className="flex items-center space-x-3 ml-4">

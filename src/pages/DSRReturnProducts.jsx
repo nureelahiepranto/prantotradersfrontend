@@ -682,7 +682,7 @@ const loadDSRStock = async () => {
                     </div>
                   ) : (
                     <div className="space-y-2">
-                      {filteredProducts.slice(0, 8).map((product) => (
+                      {filteredProducts.slice(0, 50).map((product) => (
                         <div
                           key={product._id}
                           className={`p-3 rounded-lg border cursor-pointer transition-all duration-200 ${
