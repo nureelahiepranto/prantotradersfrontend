@@ -105,7 +105,7 @@ function ProductCard({ p }) {
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const [meta, setMeta] = useState({ page: 1, pages: 1, total: 0, limit: 12 });
+  const [meta, setMeta] = useState({ page: 1, pages: 1, total: 0, limit: 100 });
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all');
