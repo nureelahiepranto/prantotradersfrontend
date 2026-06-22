@@ -249,7 +249,7 @@ export default function SalesList() {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">My Sales Records</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">My Sales Records .</h1>
               <p className="text-gray-600">Track and manage all your sales transactions</p>
             </div>
             <div className="flex items-center gap-3">
