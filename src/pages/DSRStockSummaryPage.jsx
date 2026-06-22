@@ -230,7 +230,7 @@ const SummaryCard = ({ title, value, color }) => {
 //         setLoading(true);
 //         const res = await API.get(`/dsr-stock/${dsrId}`);
 //         // const res = await axios.get(
-//         //   `https://dsrprantotradersbackend.onrender.com/api/dsr-stock/${dsrId}`
+//         //   `https://dsrriyadbackend.onrender.com/api/dsr-stock/${dsrId}`
 //         // );
 //         setData(res.data);
 //         setFilteredData(res.data.stockDetails || []);

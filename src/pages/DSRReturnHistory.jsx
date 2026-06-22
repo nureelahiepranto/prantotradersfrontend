@@ -12,7 +12,7 @@ const DSRReturnHistory = () => {
   const fetchHistory = async () => {
     try {
       const res = await axios.get(
-        `https://dsrprantotradersbackend.onrender.com/api/dsr-return/dsr/${user.id}`
+        `https://dsrriyadbackend.onrender.com/api/dsr-return/dsr/${user.id}`
       );
       setReturns(res.data);
     } catch (error) {

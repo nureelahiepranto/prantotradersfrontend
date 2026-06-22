@@ -509,7 +509,7 @@ const StatCard = ({ title, value, icon, color }) => {
 
 //   const fetchReturns = async () => {
 //     try {
-//       const res = await axios.get("https://dsrprantotradersbackend.onrender.com/api/dsr-return");
+//       const res = await axios.get("https://dsrriyadbackend.onrender.com/api/dsr-return");
 //       setReturns(res.data);
 //     } catch (err) {
 //       console.error("Return load error:", err);
