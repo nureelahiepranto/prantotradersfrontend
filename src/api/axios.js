@@ -1,15 +1,15 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://dsrriyadbackend.onrender.com/api", // ensure this matches your backend
+  baseURL: "https://dsrprantotradersbackend.onrender.com/api", // ensure this matches your backend
 });
-
+ 
 // const API = axios.create({
-//   baseURL: "https://dsrriyadbackend.onrender.com/api", // ensure this matches your backend
+//   baseURL: "http://localhost:5000/api", // ensure this matches your backend
 // }); 
 
 // const API = axios.create({
-//   baseURL: "https://dsrriyadbackend.onrender.com/api", // ensure this matches your backend
+//   baseURL: "http://localhost:5000/api", // ensure this matches your backend
 // });
 
 API.interceptors.request.use((config) => {

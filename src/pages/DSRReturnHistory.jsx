@@ -12,7 +12,11 @@ const DSRReturnHistory = () => {
   const fetchHistory = async () => {
     try {
       const res = await axios.get(
-        `https://dsrriyadbackend.onrender.com/api/dsr-return/dsr/${user.id}`
+<<<<<<< HEAD
+        `http://localhost:5000/api/dsr-return/dsr/${user.id}`
+=======
+        `http://localhost:5000/api/dsr-return/dsr/${user.id}`
+>>>>>>> c6e6736 (update code)
       );
       setReturns(res.data);
     } catch (error) {
